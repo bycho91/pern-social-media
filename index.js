@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const session = require("express-session");
+const passport = require("passport");
 const app = express();
 
 // MIDDLEWARES
@@ -22,7 +23,16 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json());
+
+// ROUTERS
+
+const indexRouter = require("./routes/indexRouter");
+app.use("/", indexRouter);
+const authRouter = require("./routes/authRouter");
+app.use("/auth", authRouter);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`SERVER STARTED ON ${PORT}`));
