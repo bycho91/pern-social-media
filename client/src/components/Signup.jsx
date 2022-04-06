@@ -3,8 +3,10 @@ import { Button } from "@mui/material";
 import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
-  const signin = () => {
-    return null;
+  const signin = (e) => {
+    e.preventDefault();
+    const str = `${process.env.REACT_APP_SERVER_URL}/auth/google`;
+    window.open(str, "_self");
   };
   return (
     <SignupContainer>
@@ -14,6 +16,7 @@ const Signup = () => {
           <sub>created by Benjamin C.</sub>
         </div>
         <Button
+          type="submit"
           variant="contained"
           sx={{
             display: "flex",

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Signup } from "./components";
 import { useContext } from "react";
 import { UserContext } from "./components/UserContext";
+import SignedIn from "./components/SignedIn";
 function App() {
   const user = useContext(UserContext);
 
@@ -14,7 +15,13 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <GlobalStyle />
         <StyledApp>
-          {user?.loggedIn === true ? <div>loggined in</div> : <Signup />}
+          {user?.loggedIn === null ? (
+            ""
+          ) : user?.loggedIn === true ? (
+            <SignedIn />
+          ) : (
+            <Signup />
+          )}
         </StyledApp>
       </ThemeProvider>
     </Router>

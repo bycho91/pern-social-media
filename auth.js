@@ -43,6 +43,7 @@ passport.use(
             username: currentUserQuery.rows[0].username,
             img: currentUserQuery.rows[0].img,
           };
+          done(null, user);
         }
       } catch (error) {
         done(error);
