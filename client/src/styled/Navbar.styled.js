@@ -23,7 +23,7 @@ export const MobileNav = styled.nav`
   bottom: 0;
   left: 0;
   width: 40%;
-  padding: 4rem 0.5rem;
+  padding: 4rem 0;
   gap: 2em;
   text-align: center;
   font-size: 1.3rem;
@@ -33,10 +33,15 @@ export const MobileNav = styled.nav`
   transition: transform 150ms ease-in;
 
   a:first-child {
-    text-decoration: none;
+    padding: 0.5em;
   }
   a {
+    text-decoration: none;
     color: white;
+  }
+
+  h1 {
+    font-family: "Lobster", cursive;
   }
 
   @media (min-width: 600px) {
@@ -44,4 +49,45 @@ export const MobileNav = styled.nav`
   }
 `;
 
-export const DesktopNav = styled.nav``;
+export const DesktopNav = styled.nav`
+  display: flex;
+  align-items: center;
+  background-color: ${(props) => props.theme.elevation_2};
+
+  max-width: 100%;
+  gap: 2rem;
+  font-size: 1.5rem;
+  padding: 1em 1.5em;
+
+  a:first-child {
+    margin-right: auto;
+    &:hover {
+      text-decoration: none;
+      transform: none;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    transition: transform 120ms ease-in;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  h1 {
+    font-family: "Lobster", cursive;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+export const PostModalButton = styled.i`
+  font-size: 2rem;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
+`;

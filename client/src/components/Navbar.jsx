@@ -4,42 +4,72 @@ import {
   HamburgerBtn,
   MobileNav,
   NavbarContainer,
+  PostModalButton,
 } from "../styled/Navbar.styled";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import PostModal from "./PostModal";
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
+  const [modal, setModal] = useState(false);
+
+  const handleOpen = () => {
+    setModal(true);
+  };
+
+  const handleClose = () => {
+    setModal(false);
+  };
+
   return (
     <NavbarContainer>
       <HamburgerBtn
-        className="fas fa-bars"
+        className={sidebar ? "fa-solid fa-xmark" : "fas fa-bars"}
         onClick={() => setSidebar(!sidebar)}
       />
       <MobileNav open={sidebar}>
-        <Link to="/">
-          <h1>PERN Social</h1>
-        </Link>
-        <Link to="/">
-          <p>Feed</p>
-        </Link>
-        <Link to="/account">
-          <p>Account</p>
-        </Link>
+        <Links setSidebar={setSidebar} handleOpen={handleOpen} />
       </MobileNav>
 
-      {/* <DesktopNav>
-        <Link to="/">
-          <h1>PERN Social</h1>
-        </Link>
-        <Link to="/">
-          <p>Feed</p>
-        </Link>
-        <Link to="/account">
-          <p>Account</p>
-        </Link>
-      </DesktopNav> */}
+      <DesktopNav>
+        <Links setSidebar={null} handleOpen={handleOpen} />
+      </DesktopNav>
+      {modal && <PostModal open={modal} handleClose={handleClose} />}
     </NavbarContainer>
   );
 };
 
 export default Navbar;
+
+const Links = ({ setSidebar, handleOpen }) => (
+  <>
+    <Link
+      to="/"
+      onClick={() => {
+        setSidebar && setSidebar(false);
+      }}
+    >
+      <h1>PERN Social</h1>
+    </Link>
+
+    <Link
+      to="/"
+      onClick={() => {
+        setSidebar && setSidebar(false);
+      }}
+    >
+      <p>Feed</p>
+    </Link>
+
+    <Link
+      to="/account"
+      onClick={() => {
+        setSidebar && setSidebar(false);
+      }}
+    >
+      <p>Account</p>
+    </Link>
+    <PostModalButton className="fa-solid fa-square-plus" onClick={handleOpen} />
+  </>
+);
