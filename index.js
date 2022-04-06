@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const session = require("express-session");
 const passport = require("passport");
+require("./auth.js");
 const app = express();
 
 // MIDDLEWARES
@@ -30,8 +31,8 @@ app.use(express.json());
 // ROUTERS
 
 const indexRouter = require("./routes/indexRouter");
-app.use("/", indexRouter);
 const authRouter = require("./routes/authRouter");
+app.use("/", indexRouter);
 app.use("/auth", authRouter);
 
 const PORT = process.env.PORT || 5000;
