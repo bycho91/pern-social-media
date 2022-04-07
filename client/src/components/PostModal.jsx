@@ -1,11 +1,14 @@
 import { Modal, Button, Box, TextField, Typography } from "@mui/material";
-
 import { useForm } from "react-hook-form";
+import useSendPost from "../hooks/useSendPost";
 
 const PostModal = ({ open, handleClose }) => {
+  const { mutate: sendPost } = useSendPost();
+
   const onSubmit = (data) => {
     handleClose();
-    console.log(data.post);
+    // submit the post to db
+    sendPost({ post: data.post });
   };
 
   const {

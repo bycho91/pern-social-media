@@ -56,8 +56,8 @@ export const DesktopNav = styled.nav`
 
   max-width: 100%;
   gap: 2rem;
-  font-size: 1.5rem;
-  padding: 1em 1.5em;
+  font-size: 1rem;
+  padding: 0.7em 1.5em;
 
   a:first-child {
     margin-right: auto;
