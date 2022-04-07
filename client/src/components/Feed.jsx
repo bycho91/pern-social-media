@@ -1,11 +1,32 @@
 import { FeedContainer } from "../styled/Feed.styled";
 import useFeed from "../hooks/useFeed";
+import { Button } from "@mui/material";
+import PostCard from "./PostCard";
 
 const Feed = () => {
-  const { data } = useFeed();
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isError,
+  } = useFeed();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div>Error...</div>;
+  }
   return (
     <FeedContainer>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <h1>Recent Posts</h1>
+      {data?.pages?.map((page) =>
+        page.posts.map((post, i) => <PostCard post={post} key={i} />)
+      )}
+      {hasNextPage && !isFetchingNextPage && (
+        <Button onClick={() => fetchNextPage()}>Load More</Button>
+      )}
     </FeedContainer>
   );
 };

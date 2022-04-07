@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const NavbarContainer = styled.div``;
+export const NavbarContainer = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 3;
+`;
 
 export const HamburgerBtn = styled.i`
   position: absolute;
