@@ -10,9 +10,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import PostModal from "./PostModal";
 
-const Navbar = () => {
+const Navbar = ({ modal, setModal }) => {
   const [sidebar, setSidebar] = useState(false);
-  const [modal, setModal] = useState(false);
 
   const handleOpen = () => {
     setModal(true);
@@ -70,6 +69,12 @@ const Links = ({ setSidebar, handleOpen }) => (
     >
       <p>Account</p>
     </Link>
-    <PostModalButton className="fa-solid fa-square-plus" onClick={handleOpen} />
+    <PostModalButton
+      className="fa-solid fa-square-plus"
+      onClick={() => {
+        handleOpen();
+        setSidebar && setSidebar(false);
+      }}
+    />
   </>
 );

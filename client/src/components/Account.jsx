@@ -1,5 +1,6 @@
+import { AccountContainer } from "../styled/Account.styled";
 const Account = () => {
-  return <div>Account</div>;
+  return <AccountContainer>Account</AccountContainer>;
 };
 
 export default Account;

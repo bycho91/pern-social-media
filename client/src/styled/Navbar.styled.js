@@ -85,9 +85,16 @@ export const DesktopNav = styled.nav`
 `;
 
 export const PostModalButton = styled.i`
-  font-size: 2rem;
+  font-size: 3rem;
   cursor: pointer;
+  color: ${(props) => props.theme.primary};
   &:hover {
     transform: scale(1.05);
+    color: ${(props) => props.theme.primaryHover};
+  }
+
+  @media (max-width: 600px) {
+    margin-top: auto;
+    font-size: 4rem;
   }
 `;

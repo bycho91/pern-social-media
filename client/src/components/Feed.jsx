@@ -1,5 +1,7 @@
+import { FeedContainer } from "../styled/Feed.styled";
+
 const Feed = () => {
-  return <div>Feed</div>;
+  return <FeedContainer>Feed</FeedContainer>;
 };
 
 export default Feed;
